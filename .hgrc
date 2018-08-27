@@ -1,0 +1,17 @@
+[ui]
+username = 
+ssh = ssh -C
+editor = vim
+
+[pager]
+pager = less
+
+[extensions]
+mq = 
+pager =
+prompt = /home/dan/.config/hg/hg-prompt/prompt.py
+
+[alias]
+br = branch
+brs = branches
+rv = revert --no-backup
