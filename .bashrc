@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+eval $(dircolors ~/.dircolors)
 
 # Сброс
 ColorOff='\e[0m'
