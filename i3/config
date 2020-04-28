@@ -9,27 +9,37 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Mod4 - windows key, Mod1 (default) - Alt key
 set $mod Mod4
 
 exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 
+# set up wallpaper
+exec --no-startup-id nitrogen --restore
+
+# run composite manager
+exec --no-startup-id compton
+
+# border style
+default_border pixel 3 
+
 for_window [class="^.*"] border pixel 3
 gaps inner 5
-gaps outer 3
+gaps outer 5
 smart_borders on
 
 # locker
 bindsym Ctrl+$mod+l exec --no-startup-id $HOME/.config/i3/lock.sh
 
 # launcher
-bindsym $mod+d exec --no-startup-id $HOME/.config/i3/rofi.sh
+bindsym $mod+d exec --no-startup-id $HOME/.config/rofi/rofi.sh
+
+#screenshot
+bindsym $mod+Print exec --no-startup-id flameshot gui
 
 # sound
 bindsym $mod+plus exec --no-startup-id amixer set Master 5%+
 bindsym $mod+minus exec --no-startup-id amixer set Master 5%-
-
-# screenshot
-bindsym $mod+Print exec --no-startup-id flameshot gui
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -46,9 +56,6 @@ bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
 
 # change focus
 bindsym $mod+j focus down
@@ -124,8 +131,10 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -156,11 +165,3 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# set up wallpaper
-exec --no-startup-id nitrogen --restore
-
-# run composite manager
-exec --no-startup-id compton
-
-# border style
-default_border pixel 3 
