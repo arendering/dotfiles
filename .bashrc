@@ -34,9 +34,10 @@ ssh_agent_startup() {
         if [ ! -z $(which ssh-agent) ]; then
             eval `ssh-agent -s` > /dev/null 2>&1
 
-            for rsa_key in $(ls $HOME/.ssh | grep "^id_" | grep -v "pub$")
+            for public_key in $(ls $HOME/.ssh | grep ".pub$")
             do
-                ssh-add $HOME/.ssh/$rsa_key > /dev/null 2>&1
+                private_key=$(echo $public_key | sed 's/.pub//g')
+                ssh-add $HOME/.ssh/$private_key > /dev/null 2>&1
             done
         fi
     fi
@@ -45,8 +46,7 @@ ssh_agent_startup() {
 # main
 
 if [ "$color_prompt" = yes ]; then
-    # do not use color variables, because of single quotes for hg_branch()
-    PS1='\[\e[0;92m\]\u@\h:\[\e[0;94m\][\w]\[\e[0;93m\]$(hg_branch)\n\[\e[0m\]$ '
+    PS1='\[\e[0;92m\]\u@\h:\[\e[0;94m\][\w]\[\e[0;93m\]\n\[\e[0m\]$ '
 else
     PS1='[\u@\h \W]\$ '
 fi
