@@ -1,6 +1,9 @@
 [user]
-    email = 
-    name = 
+    email = dan_2015@mail.ru
+    name = Daniil Bondarenko
+
+[core]
+    editor = vim
 
 [alias]
     st = status
