@@ -14,17 +14,17 @@ COLOR_3="0faceaff" # blue
 
 i3lock \
 --keylayout 2 \
---timecolor="$COLOR_1" \
---datecolor="$COLOR_1" \
---timestr="%H:%M" \
+--time-color="$COLOR_1" \
+--date-color="$COLOR_1" \
+--time-str="%H:%M" \
 --indicator \
---insidecolor="$COLOR_2" \
---ringcolor="$COLOR_1" \
---insidevercolor="$COLOR_2" \
---ringvercolor="$COLOR_2" \
---linecolor="$COLOR_3" \
---layoutcolor="$COLOR_3" \
---keyhlcolor="$COLOR_3" \
+--inside-color="$COLOR_2" \
+--ring-color="$COLOR_1" \
+--insidever-color="$COLOR_2" \
+--ringver-color="$COLOR_2" \
+--line-color="$COLOR_3" \
+--layout-color="$COLOR_3" \
+--keyhl-color="$COLOR_3" \
 -k -e -i $TMP_SCREENSHOT
 
 rm $TMP_SCREENSHOT
